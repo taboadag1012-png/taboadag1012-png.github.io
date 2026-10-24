@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Volviendo a Pauta…</title>
+<style>body{font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;background:#f6f6f4;color:#222}main{max-width:420px;padding:24px;text-align:center}a{color:#3b5bdb}</style>
+</head>
+<body>
+<main>
+<p>Volviendo a Pauta…</p>
+<p id="fallback" hidden>Si no vuelve sola, comprueba que Pauta está abierta en este ordenador y <a id="go" href="#">pulsa aquí</a>.</p>
+</main>
+<script>
+// Pauta runs only on this computer (localhost). Meta requires an https address for Instagram login,
+// so this page just forwards the login result (code and state) back to Pauta. Nothing is stored here.
+var target = 'http://localhost:4321/oauth/instagram/callback' + window.location.search;
+document.getElementById('go').href = target;
+setTimeout(function () { document.getElementById('fallback').hidden = false; }, 2500);
+window.location.replace(target);
+</script>
+</body>
+</html>
